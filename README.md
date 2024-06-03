@@ -37,6 +37,7 @@ yarn android
 ```bash
 # using npm
 npm run ios
+npx react-native run-ios --simulator="iPhone 15 Pro"
 
 # OR using Yarn
 yarn ios
