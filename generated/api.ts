@@ -202,6 +202,149 @@ export interface ContactCreateDto {
 /**
  * 
  * @export
+ * @interface OrderCreateDto
+ */
+export interface OrderCreateDto {
+    /**
+     * List of order items
+     * @type {Array<OrderItemDto>}
+     * @memberof OrderCreateDto
+     */
+    'items': Array<OrderItemDto>;
+    /**
+     * ID of the shipping address
+     * @type {string}
+     * @memberof OrderCreateDto
+     */
+    'addressId': string;
+    /**
+     * ID of the credit card
+     * @type {string}
+     * @memberof OrderCreateDto
+     */
+    'creditCardId': string;
+}
+/**
+ * 
+ * @export
+ * @interface OrderDto
+ */
+export interface OrderDto {
+    /**
+     * ID of the order
+     * @type {string}
+     * @memberof OrderDto
+     */
+    'id': string;
+    /**
+     * Slug of the product
+     * @type {string}
+     * @memberof OrderDto
+     */
+    'slug': string;
+    /**
+     * Quantity of the product
+     * @type {number}
+     * @memberof OrderDto
+     */
+    'quantity': number;
+    /**
+     * ID of the shipping address
+     * @type {string}
+     * @memberof OrderDto
+     */
+    'addressId': string;
+    /**
+     * ID of the credit card
+     * @type {string}
+     * @memberof OrderDto
+     */
+    'creditCardId': string;
+}
+/**
+ * 
+ * @export
+ * @interface OrderItemDto
+ */
+export interface OrderItemDto {
+    /**
+     * ID of the product
+     * @type {string}
+     * @memberof OrderItemDto
+     */
+    'slug': string;
+    /**
+     * Quantity of the product
+     * @type {number}
+     * @memberof OrderItemDto
+     */
+    'quantity': number;
+}
+/**
+ * 
+ * @export
+ * @interface OrderItemResponse
+ */
+export interface OrderItemResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof OrderItemResponse
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof OrderItemResponse
+     */
+    'quantity': string;
+    /**
+     * 
+     * @type {ProductResponse}
+     * @memberof OrderItemResponse
+     */
+    'product': ProductResponse;
+}
+/**
+ * 
+ * @export
+ * @interface OrderResponse
+ */
+export interface OrderResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof OrderResponse
+     */
+    'id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof OrderResponse
+     */
+    'orderSecondaryId': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof OrderResponse
+     */
+    'userId': string;
+    /**
+     * 
+     * @type {Array<OrderItemResponse>}
+     * @memberof OrderResponse
+     */
+    'orderItems': Array<OrderItemResponse>;
+    /**
+     * 
+     * @type {UserAddressResponse}
+     * @memberof OrderResponse
+     */
+    'address': UserAddressResponse;
+}
+/**
+ * 
+ * @export
  * @interface ProductCategoryCreateDto
  */
 export interface ProductCategoryCreateDto {
@@ -211,6 +354,12 @@ export interface ProductCategoryCreateDto {
      * @memberof ProductCategoryCreateDto
      */
     'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ProductCategoryCreateDto
+     */
+    'slug': string;
     /**
      * 
      * @type {string}
@@ -259,6 +408,12 @@ export interface ProductCategoryResponse {
      * @type {string}
      * @memberof ProductCategoryResponse
      */
+    'slug': string;
+    /**
+     * Field
+     * @type {string}
+     * @memberof ProductCategoryResponse
+     */
     'createdAt': string;
     /**
      * Field
@@ -279,6 +434,12 @@ export interface ProductCreateDto {
      * @memberof ProductCreateDto
      */
     'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ProductCreateDto
+     */
+    'slug': string;
     /**
      * 
      * @type {string}
@@ -376,6 +537,12 @@ export interface ProductResponse {
      * @memberof ProductResponse
      */
     'productTypes': Array<ProductTypeResponse>;
+    /**
+     * Field
+     * @type {string}
+     * @memberof ProductResponse
+     */
+    'slug': string;
 }
 /**
  * 
@@ -481,7 +648,7 @@ export interface UserAddressCreateDto {
      * @type {string}
      * @memberof UserAddressCreateDto
      */
-    'streetNumber': string;
+    'streetNumber'?: string;
     /**
      * 
      * @type {string}
@@ -504,6 +671,67 @@ export interface UserAddressCreateDto {
      * 
      * @type {string}
      * @memberof UserAddressCreateDto
+     */
+    'country': string;
+}
+/**
+ * 
+ * @export
+ * @interface UserAddressResponse
+ */
+export interface UserAddressResponse {
+    /**
+     * Field
+     * @type {string}
+     * @memberof UserAddressResponse
+     */
+    'id': string;
+    /**
+     * Field
+     * @type {string}
+     * @memberof UserAddressResponse
+     */
+    'firstName': string;
+    /**
+     * Field
+     * @type {string}
+     * @memberof UserAddressResponse
+     */
+    'lastName': string;
+    /**
+     * Field
+     * @type {string}
+     * @memberof UserAddressResponse
+     */
+    'phone': string;
+    /**
+     * Field
+     * @type {string}
+     * @memberof UserAddressResponse
+     */
+    'street': string;
+    /**
+     * Field
+     * @type {string}
+     * @memberof UserAddressResponse
+     */
+    'additional': string;
+    /**
+     * Field
+     * @type {string}
+     * @memberof UserAddressResponse
+     */
+    'zipCode': string;
+    /**
+     * Field
+     * @type {string}
+     * @memberof UserAddressResponse
+     */
+    'city': string;
+    /**
+     * Field
+     * @type {string}
+     * @memberof UserAddressResponse
      */
     'country': string;
 }
@@ -573,6 +801,136 @@ export interface UserAddressUpdateDto {
      * @memberof UserAddressUpdateDto
      */
     'country'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface UserCreateCardResponse
+ */
+export interface UserCreateCardResponse {
+    /**
+     * Field
+     * @type {string}
+     * @memberof UserCreateCardResponse
+     */
+    'id': string;
+    /**
+     * Field
+     * @type {string}
+     * @memberof UserCreateCardResponse
+     */
+    'cardNumber': string;
+    /**
+     * Field
+     * @type {string}
+     * @memberof UserCreateCardResponse
+     */
+    'expiryDate': string;
+    /**
+     * Field
+     * @type {string}
+     * @memberof UserCreateCardResponse
+     */
+    'cvv': string;
+}
+/**
+ * 
+ * @export
+ * @interface UserCreditCardCreateDto
+ */
+export interface UserCreditCardCreateDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof UserCreditCardCreateDto
+     */
+    'cardNumber': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserCreditCardCreateDto
+     */
+    'cardHolderName': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserCreditCardCreateDto
+     */
+    'expiryDate': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof UserCreditCardCreateDto
+     */
+    'cvv': number;
+}
+/**
+ * 
+ * @export
+ * @interface UserCreditCardUpdateDto
+ */
+export interface UserCreditCardUpdateDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof UserCreditCardUpdateDto
+     */
+    'cardNumber'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserCreditCardUpdateDto
+     */
+    'cardHolder'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserCreditCardUpdateDto
+     */
+    'expiryDate'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof UserCreditCardUpdateDto
+     */
+    'cvv'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface UserResponse
+ */
+export interface UserResponse {
+    /**
+     * Field
+     * @type {string}
+     * @memberof UserResponse
+     */
+    'id': string;
+    /**
+     * Field
+     * @type {string}
+     * @memberof UserResponse
+     */
+    'firstName': string;
+    /**
+     * Field
+     * @type {string}
+     * @memberof UserResponse
+     */
+    'lastName': string;
+    /**
+     * Field
+     * @type {string}
+     * @memberof UserResponse
+     */
+    'email': string;
+    /**
+     * Field
+     * @type {string}
+     * @memberof UserResponse
+     */
+    'roles': string;
 }
 /**
  * 
@@ -1033,6 +1391,186 @@ export class DefaultApi extends BaseAPI {
 
 
 /**
+ * OrdersApi - axios parameter creator
+ * @export
+ */
+export const OrdersApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Create an order
+         * @param {OrderCreateDto} orderCreateDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        ordersControllerCreateOrder: async (orderCreateDto: OrderCreateDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'orderCreateDto' is not null or undefined
+            assertParamExists('ordersControllerCreateOrder', 'orderCreateDto', orderCreateDto)
+            const localVarPath = `/orders`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(orderCreateDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get orders of the authenticated user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        ordersControllerGetUserOrders: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/orders`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * OrdersApi - functional programming interface
+ * @export
+ */
+export const OrdersApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = OrdersApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Create an order
+         * @param {OrderCreateDto} orderCreateDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async ordersControllerCreateOrder(orderCreateDto: OrderCreateDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OrderDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.ordersControllerCreateOrder(orderCreateDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['OrdersApi.ordersControllerCreateOrder']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get orders of the authenticated user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async ordersControllerGetUserOrders(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<OrderResponse>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.ordersControllerGetUserOrders(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['OrdersApi.ordersControllerGetUserOrders']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * OrdersApi - factory interface
+ * @export
+ */
+export const OrdersApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = OrdersApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Create an order
+         * @param {OrderCreateDto} orderCreateDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        ordersControllerCreateOrder(orderCreateDto: OrderCreateDto, options?: any): AxiosPromise<OrderDto> {
+            return localVarFp.ordersControllerCreateOrder(orderCreateDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get orders of the authenticated user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        ordersControllerGetUserOrders(options?: any): AxiosPromise<Array<OrderResponse>> {
+            return localVarFp.ordersControllerGetUserOrders(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * OrdersApi - object-oriented interface
+ * @export
+ * @class OrdersApi
+ * @extends {BaseAPI}
+ */
+export class OrdersApi extends BaseAPI {
+    /**
+     * 
+     * @summary Create an order
+     * @param {OrderCreateDto} orderCreateDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OrdersApi
+     */
+    public ordersControllerCreateOrder(orderCreateDto: OrderCreateDto, options?: RawAxiosRequestConfig) {
+        return OrdersApiFp(this.configuration).ordersControllerCreateOrder(orderCreateDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get orders of the authenticated user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OrdersApi
+     */
+    public ordersControllerGetUserOrders(options?: RawAxiosRequestConfig) {
+        return OrdersApiFp(this.configuration).ordersControllerGetUserOrders(options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
  * ProductsApi - axios parameter creator
  * @export
  */
@@ -1268,6 +1806,43 @@ export const ProductsApiAxiosParamCreator = function (configuration?: Configurat
         },
         /**
          * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        productControllerFindByCategoryId: async (id: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('productControllerFindByCategoryId', 'id', id)
+            const localVarPath = `/products/search/category/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {string} name 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1308,6 +1883,43 @@ export const ProductsApiAxiosParamCreator = function (configuration?: Configurat
         },
         /**
          * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        productControllerFindByProductCategoryId: async (id: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('productControllerFindByProductCategoryId', 'id', id)
+            const localVarPath = `/products/categories/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {string} name 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1334,6 +1946,80 @@ export const ProductsApiAxiosParamCreator = function (configuration?: Configurat
             if (name !== undefined) {
                 localVarQueryParameter['name'] = name;
             }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} slug 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        productControllerFindByProductCategorySlug: async (slug: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'slug' is not null or undefined
+            assertParamExists('productControllerFindByProductCategorySlug', 'slug', slug)
+            const localVarPath = `/products/categories/slug/{slug}`
+                .replace(`{${"slug"}}`, encodeURIComponent(String(slug)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} slug 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        productControllerFindByProductSlug: async (slug: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'slug' is not null or undefined
+            assertParamExists('productControllerFindByProductSlug', 'slug', slug)
+            const localVarPath = `/products/search/slug/{slug}`
+                .replace(`{${"slug"}}`, encodeURIComponent(String(slug)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
 
     
@@ -1657,6 +2343,18 @@ export const ProductsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async productControllerFindByCategoryId(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ProductResponse>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.productControllerFindByCategoryId(id, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ProductsApi.productControllerFindByCategoryId']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {string} name 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1669,6 +2367,18 @@ export const ProductsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async productControllerFindByProductCategoryId(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ProductResponse>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.productControllerFindByProductCategoryId(id, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ProductsApi.productControllerFindByProductCategoryId']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {string} name 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1677,6 +2387,30 @@ export const ProductsApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.productControllerFindByProductCategoryName(name, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ProductsApi.productControllerFindByProductCategoryName']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} slug 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async productControllerFindByProductCategorySlug(slug: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.productControllerFindByProductCategorySlug(slug, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ProductsApi.productControllerFindByProductCategorySlug']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} slug 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async productControllerFindByProductSlug(slug: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.productControllerFindByProductSlug(slug, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ProductsApi.productControllerFindByProductSlug']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1817,6 +2551,15 @@ export const ProductsApiFactory = function (configuration?: Configuration, baseP
         },
         /**
          * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        productControllerFindByCategoryId(id: string, options?: any): AxiosPromise<Array<ProductResponse>> {
+            return localVarFp.productControllerFindByCategoryId(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {string} name 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1826,12 +2569,39 @@ export const ProductsApiFactory = function (configuration?: Configuration, baseP
         },
         /**
          * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        productControllerFindByProductCategoryId(id: string, options?: any): AxiosPromise<Array<ProductResponse>> {
+            return localVarFp.productControllerFindByProductCategoryId(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {string} name 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         productControllerFindByProductCategoryName(name: string, options?: any): AxiosPromise<ProductCategoryResponse> {
             return localVarFp.productControllerFindByProductCategoryName(name, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} slug 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        productControllerFindByProductCategorySlug(slug: string, options?: any): AxiosPromise<void> {
+            return localVarFp.productControllerFindByProductCategorySlug(slug, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} slug 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        productControllerFindByProductSlug(slug: string, options?: any): AxiosPromise<void> {
+            return localVarFp.productControllerFindByProductSlug(slug, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1965,6 +2735,17 @@ export class ProductsApi extends BaseAPI {
 
     /**
      * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProductsApi
+     */
+    public productControllerFindByCategoryId(id: string, options?: RawAxiosRequestConfig) {
+        return ProductsApiFp(this.configuration).productControllerFindByCategoryId(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @param {string} name 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1976,6 +2757,17 @@ export class ProductsApi extends BaseAPI {
 
     /**
      * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProductsApi
+     */
+    public productControllerFindByProductCategoryId(id: string, options?: RawAxiosRequestConfig) {
+        return ProductsApiFp(this.configuration).productControllerFindByProductCategoryId(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @param {string} name 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1983,6 +2775,28 @@ export class ProductsApi extends BaseAPI {
      */
     public productControllerFindByProductCategoryName(name: string, options?: RawAxiosRequestConfig) {
         return ProductsApiFp(this.configuration).productControllerFindByProductCategoryName(name, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} slug 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProductsApi
+     */
+    public productControllerFindByProductCategorySlug(slug: string, options?: RawAxiosRequestConfig) {
+        return ProductsApiFp(this.configuration).productControllerFindByProductCategorySlug(slug, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} slug 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProductsApi
+     */
+    public productControllerFindByProductSlug(slug: string, options?: RawAxiosRequestConfig) {
+        return ProductsApiFp(this.configuration).productControllerFindByProductSlug(slug, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -2101,6 +2915,45 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @param {UserCreditCardCreateDto} userCreditCardCreateDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userControllerCreateCreditCard: async (userCreditCardCreateDto: UserCreditCardCreateDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userCreditCardCreateDto' is not null or undefined
+            assertParamExists('userControllerCreateCreditCard', 'userCreditCardCreateDto', userCreditCardCreateDto)
+            const localVarPath = `/user/credit-card`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(userCreditCardCreateDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {string} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2138,11 +2991,81 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userControllerDeleteCreditCard: async (id: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('userControllerDeleteCreditCard', 'id', id)
+            const localVarPath = `/user/credit-card/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         userControllerFindAllAddress: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/user/address`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userControllerFindAllCreditCard: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/user/credit-card`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -2284,6 +3207,49 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @param {string} id 
+         * @param {UserCreditCardUpdateDto} userCreditCardUpdateDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userControllerUpdateCreditCard: async (id: string, userCreditCardUpdateDto: UserCreditCardUpdateDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('userControllerUpdateCreditCard', 'id', id)
+            // verify required parameter 'userCreditCardUpdateDto' is not null or undefined
+            assertParamExists('userControllerUpdateCreditCard', 'userCreditCardUpdateDto', userCreditCardUpdateDto)
+            const localVarPath = `/user/credit-card/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(userCreditCardUpdateDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -2300,10 +3266,22 @@ export const UserApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userControllerCreateAddress(userAddressCreateDto: UserAddressCreateDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async userControllerCreateAddress(userAddressCreateDto: UserAddressCreateDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserAddressResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.userControllerCreateAddress(userAddressCreateDto, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['UserApi.userControllerCreateAddress']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {UserCreditCardCreateDto} userCreditCardCreateDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async userControllerCreateCreditCard(userCreditCardCreateDto: UserCreditCardCreateDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserCreateCardResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userControllerCreateCreditCard(userCreditCardCreateDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['UserApi.userControllerCreateCreditCard']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -2320,10 +3298,22 @@ export const UserApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {string} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userControllerFindAllAddress(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async userControllerDeleteCreditCard(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userControllerDeleteCreditCard(id, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['UserApi.userControllerDeleteCreditCard']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async userControllerFindAllAddress(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserAddressResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.userControllerFindAllAddress(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['UserApi.userControllerFindAllAddress']?.[localVarOperationServerIndex]?.url;
@@ -2334,7 +3324,18 @@ export const UserApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userControllerFindMe(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async userControllerFindAllCreditCard(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserCreateCardResponse>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userControllerFindAllCreditCard(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['UserApi.userControllerFindAllCreditCard']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async userControllerFindMe(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.userControllerFindMe(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['UserApi.userControllerFindMe']?.[localVarOperationServerIndex]?.url;
@@ -2365,6 +3366,19 @@ export const UserApiFp = function(configuration?: Configuration) {
             const localVarOperationServerBasePath = operationServerMap['UserApi.userControllerUpdateAddress']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
+        /**
+         * 
+         * @param {string} id 
+         * @param {UserCreditCardUpdateDto} userCreditCardUpdateDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async userControllerUpdateCreditCard(id: string, userCreditCardUpdateDto: UserCreditCardUpdateDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userControllerUpdateCreditCard(id, userCreditCardUpdateDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['UserApi.userControllerUpdateCreditCard']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
     }
 };
 
@@ -2381,8 +3395,17 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userControllerCreateAddress(userAddressCreateDto: UserAddressCreateDto, options?: any): AxiosPromise<void> {
+        userControllerCreateAddress(userAddressCreateDto: UserAddressCreateDto, options?: any): AxiosPromise<UserAddressResponse> {
             return localVarFp.userControllerCreateAddress(userAddressCreateDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {UserCreditCardCreateDto} userCreditCardCreateDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userControllerCreateCreditCard(userCreditCardCreateDto: UserCreditCardCreateDto, options?: any): AxiosPromise<UserCreateCardResponse> {
+            return localVarFp.userControllerCreateCreditCard(userCreditCardCreateDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2395,10 +3418,19 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
         },
         /**
          * 
+         * @param {string} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userControllerFindAllAddress(options?: any): AxiosPromise<void> {
+        userControllerDeleteCreditCard(id: string, options?: any): AxiosPromise<void> {
+            return localVarFp.userControllerDeleteCreditCard(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userControllerFindAllAddress(options?: any): AxiosPromise<UserAddressResponse> {
             return localVarFp.userControllerFindAllAddress(options).then((request) => request(axios, basePath));
         },
         /**
@@ -2406,7 +3438,15 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userControllerFindMe(options?: any): AxiosPromise<void> {
+        userControllerFindAllCreditCard(options?: any): AxiosPromise<Array<UserCreateCardResponse>> {
+            return localVarFp.userControllerFindAllCreditCard(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userControllerFindMe(options?: any): AxiosPromise<UserResponse> {
             return localVarFp.userControllerFindMe(options).then((request) => request(axios, basePath));
         },
         /**
@@ -2427,6 +3467,16 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          */
         userControllerUpdateAddress(id: string, userAddressUpdateDto: UserAddressUpdateDto, options?: any): AxiosPromise<void> {
             return localVarFp.userControllerUpdateAddress(id, userAddressUpdateDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {UserCreditCardUpdateDto} userCreditCardUpdateDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userControllerUpdateCreditCard(id: string, userCreditCardUpdateDto: UserCreditCardUpdateDto, options?: any): AxiosPromise<void> {
+            return localVarFp.userControllerUpdateCreditCard(id, userCreditCardUpdateDto, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -2451,6 +3501,17 @@ export class UserApi extends BaseAPI {
 
     /**
      * 
+     * @param {UserCreditCardCreateDto} userCreditCardCreateDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserApi
+     */
+    public userControllerCreateCreditCard(userCreditCardCreateDto: UserCreditCardCreateDto, options?: RawAxiosRequestConfig) {
+        return UserApiFp(this.configuration).userControllerCreateCreditCard(userCreditCardCreateDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @param {string} id 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2462,12 +3523,33 @@ export class UserApi extends BaseAPI {
 
     /**
      * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserApi
+     */
+    public userControllerDeleteCreditCard(id: string, options?: RawAxiosRequestConfig) {
+        return UserApiFp(this.configuration).userControllerDeleteCreditCard(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserApi
      */
     public userControllerFindAllAddress(options?: RawAxiosRequestConfig) {
         return UserApiFp(this.configuration).userControllerFindAllAddress(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserApi
+     */
+    public userControllerFindAllCreditCard(options?: RawAxiosRequestConfig) {
+        return UserApiFp(this.configuration).userControllerFindAllCreditCard(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -2501,6 +3583,18 @@ export class UserApi extends BaseAPI {
      */
     public userControllerUpdateAddress(id: string, userAddressUpdateDto: UserAddressUpdateDto, options?: RawAxiosRequestConfig) {
         return UserApiFp(this.configuration).userControllerUpdateAddress(id, userAddressUpdateDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {UserCreditCardUpdateDto} userCreditCardUpdateDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserApi
+     */
+    public userControllerUpdateCreditCard(id: string, userCreditCardUpdateDto: UserCreditCardUpdateDto, options?: RawAxiosRequestConfig) {
+        return UserApiFp(this.configuration).userControllerUpdateCreditCard(id, userCreditCardUpdateDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

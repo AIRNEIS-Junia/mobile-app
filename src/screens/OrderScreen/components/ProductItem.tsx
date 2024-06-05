@@ -12,22 +12,18 @@ const OrderProductItem: FC<Props> = ({data, onChangeQuantity}) => {
   return (
     <View style={styles.container}>
       <View style={styles.detailView}>
-        <View style={styles.imageView}>
-          <Image
-            source={{
-              uri: 'https://www.miliboo.com/canape-scandinave-3-places-en-tissu-velours-bleu-canard-et-bois-clair-ektor-46518-6483209992565_1200_675_.jpg',
-            }}
-            width={65}
-            height={65}
-          />
-        </View>
-        <View>
-          <Text style={{fontSize: 16}}>{data?.product?.name}</Text>
+        <Image
+          source={{
+            uri: 'https://www.miliboo.com/canape-scandinave-3-places-en-tissu-velours-bleu-canard-et-bois-clair-ektor-46518-6483209992565_1200_675_.jpg',
+          }}
+          style={styles.image}
+        />
+        <View style={styles.textView}>
+          <Text style={styles.productName}>{data?.product?.name}</Text>
         </View>
       </View>
-      <View
-        style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-        <Text style={{marginRight: 10}}>
+      <View style={styles.priceCounterView}>
+        <Text style={styles.price}>
           {(data?.product?.price || 0) * (data?.quantity || 0)}€
         </Text>
         <Counter
@@ -45,14 +41,34 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-  },
-  imageView: {
-    marginRight: 10,
+    width: '100%',
   },
   detailView: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    flex: 1,
+  },
+  image: {
+    width: 65,
+    height: 65,
+    marginRight: 10,
+  },
+  textView: {
+    flex: 1,
+  },
+  productName: {
+    fontSize: 16,
+    flexWrap: 'wrap',
+  },
+  priceCounterView: {
+    marginLeft: 10,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  price: {
+    marginRight: 10,
   },
 });
 

@@ -11,13 +11,16 @@
     "codegen": "npx openapi-generator-cli generate -i http://localhost:3001/docs-json -g typescript-axios -o generated --additional-properties=basePath=http://localhost:3001"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.23.1",
     "@react-navigation/bottom-tabs": "^6.5.20",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
     "@react-navigation/stack": "^6.3.29",
     "@tanstack/react-query": "^5.40.0",
     "axios": "^1.7.2",
+    "formik": "^2.4.6",
     "immer": "^10.1.1",
+    "jwt-decode": "^4.0.0",
     "react": "18.2.0",
     "react-native": "0.74.1",
     "react-native-reanimated-carousel": "^3.5.1",
@@ -26,6 +29,7 @@
     "react-native-url-polyfill": "^2.0.0",
     "react-native-uuid": "^2.0.2",
     "react-native-vector-icons": "^10.1.0",
+    "yup": "^1.4.0",
     "zustand": "^4.5.2"
   },
   "devDependencies": {

@@ -38,7 +38,7 @@ const Header: FC<Props> = ({title, withBack}) => {
           }}>
           {title}
         </Text>
-        <View style={{width: 50}} />
+        {withBack && <View style={{width: 50}} />}
       </View>
     </SafeAreaView>
   );

@@ -2,8 +2,28 @@ import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {APP_COLOR} from '../../../constants/color.ts';
 import {Navigation} from '../../../types/navigation.type.ts';
+import {useUserProvider} from '../../../contexts/UserContext.tsx';
 
 const ProfileLogin = ({navigation}: Navigation) => {
+  const {user} = useUserProvider();
+
+  if (user?.firstName != null) {
+    return (
+      <View
+        style={{
+          marginBottom: 15,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <Text style={{fontSize: 16}}>
+          Bonjour <Text style={{fontWeight: 'bold'}}>{user?.firstName}</Text>
+        </Text>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.view}>
       <Text style={{marginBottom: 5, fontSize: 15}}>

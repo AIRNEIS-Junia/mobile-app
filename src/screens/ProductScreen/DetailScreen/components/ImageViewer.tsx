@@ -35,6 +35,7 @@ const ProductDetailImageViewer: FC<Props> = ({images}) => {
         contentContainerStyle={styles.previewScroll}>
         {images?.map((img, i) => (
           <TouchableOpacity
+            key={img}
             onPress={() => {
               setActive(i);
             }}>

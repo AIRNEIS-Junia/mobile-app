@@ -5,14 +5,18 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import Margin from '../../../components/Margin/Margin.tsx';
 import {useQuery} from '@tanstack/react-query';
 import {getProductCategories} from '../../../requests/product.request.ts';
 import {ProductCategoryResponse} from '../../../../generated';
+import {Navigation} from '../../../types/navigation.type.ts';
+import {useNavigation} from '@react-navigation/native';
 
 const HomeCategory = () => {
+  const navigation = useNavigation<any>();
   const {data, error, isLoading, refetch} = useQuery({
     queryKey: ['ProductCategories'],
     queryFn: () => getProductCategories(),
@@ -26,22 +30,29 @@ const HomeCategory = () => {
     index: number;
   }) => {
     return (
-      <ImageBackground
-        imageStyle={{borderRadius: 10}}
-        source={{uri: item.image}}
-        style={styles.itemView}>
-        <View
-          style={{
-            backgroundColor: 'rgba(0,0,0,0.50)',
-            flex: 1,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 10,
-          }}>
-          <Text style={styles.itemText}>{item.name}</Text>
-        </View>
-      </ImageBackground>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('CategoryDetail', {
+            id: item.id,
+          });
+        }}>
+        <ImageBackground
+          imageStyle={{borderRadius: 10}}
+          source={{uri: item.image}}
+          style={styles.itemView}>
+          <View
+            style={{
+              backgroundColor: 'rgba(0,0,0,0.50)',
+              flex: 1,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: 10,
+            }}>
+            <Text style={styles.itemText}>{item.name}</Text>
+          </View>
+        </ImageBackground>
+      </TouchableOpacity>
     );
   };
 

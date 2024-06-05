@@ -1,12 +1,18 @@
 import React from 'react';
-import {FlatList, StyleSheet, View} from 'react-native';
+import {FlatList, SafeAreaView, StyleSheet, View} from 'react-native';
 import Header from '../../../components/Header/Header';
 import OrderProductItem from '../components/ProductItem.tsx';
 import {useOrderCartProvider} from '../../../contexts/OrderCartContext.tsx';
 import {OrderCart} from '../../../types/order.type.ts';
+import Button from '../../../components/Button/Button.tsx';
+import Margin from '../../../components/Margin/Margin.tsx';
+import {useNavigation} from '@react-navigation/native';
+import {useUserProvider} from '../../../contexts/UserContext.tsx';
 
 const OrderCartScreen = () => {
+  const navigation = useNavigation<{navigate: (data: string) => void}>();
   const {carts, changeQuantity} = useOrderCartProvider();
+  const {user} = useUserProvider();
   const renderItem = ({
     item,
     index,
@@ -32,6 +38,29 @@ const OrderCartScreen = () => {
         contentContainerStyle={{paddingHorizontal: 10}}
         data={carts}
       />
+      {carts && carts?.length > 0 && (
+        <SafeAreaView>
+          <Margin>
+            <View style={{paddingBottom: 10}}>
+              {user?.firstName ? (
+                <Button
+                  onPress={() => {
+                    navigation.navigate('OrderPayment');
+                  }}>
+                  Valider mon panier
+                </Button>
+              ) : (
+                <Button
+                  onPress={() => {
+                    navigation.navigate('Login');
+                  }}>
+                  Se connecter
+                </Button>
+              )}
+            </View>
+          </Margin>
+        </SafeAreaView>
+      )}
     </View>
   );
 };

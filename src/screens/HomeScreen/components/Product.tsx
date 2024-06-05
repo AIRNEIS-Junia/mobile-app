@@ -52,7 +52,9 @@ const HomeProduct = ({navigation}: {navigation: any}) => {
           <Text style={styles.priceText}>{item.price}€</Text>
           <TouchableWithoutFeedback
             onPress={() => {
-              console.log('BUY NOW!', index);
+              navigation?.push('ProductDetail', {
+                id: item.id,
+              });
             }}>
             <View style={styles.button}>
               <Text style={styles.buttonText}>Détail</Text>
