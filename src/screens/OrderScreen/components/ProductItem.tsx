@@ -14,7 +14,9 @@ const OrderProductItem: FC<Props> = ({data, onChangeQuantity}) => {
       <View style={styles.detailView}>
         <Image
           source={{
-            uri: 'https://www.miliboo.com/canape-scandinave-3-places-en-tissu-velours-bleu-canard-et-bois-clair-ektor-46518-6483209992565_1200_675_.jpg',
+            uri:
+              data?.product?.images?.[0] ||
+              'https://www.miliboo.com/canape-scandinave-3-places-en-tissu-velours-bleu-canard-et-bois-clair-ektor-46518-6483209992565_1200_675_.jpg',
           }}
           style={styles.image}
         />

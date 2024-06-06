@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Dimensions,
   Image,
   StyleSheet,
   Text,
@@ -18,20 +17,20 @@ const ProductItem = ({item}: {item: ProductResponse}) => {
     <TouchableWithoutFeedback
       onPress={() => {
         navigation?.push('ProductDetail', {
-          id: item.id,
+          id: item?.id,
         });
       }}
       style={{marginBottom: 25}}>
       <View style={styles.listContainer}>
         <View style={styles.imageContainer}>
-          <Image source={{uri: item.images[0]}} style={styles.image} />
+          <Image source={{uri: item.images?.[0]}} style={styles.image} />
         </View>
-        <Text style={styles.nameText}>{item.name}</Text>
-        <Text style={styles.priceText}>{item.price}€</Text>
+        <Text style={styles.nameText}>{item?.name}</Text>
+        <Text style={styles.priceText}>{item?.price}€</Text>
         <TouchableWithoutFeedback
           onPress={() => {
             navigation?.push('ProductDetail', {
-              id: item.id,
+              id: item?.id,
             });
           }}>
           <View style={styles.button}>

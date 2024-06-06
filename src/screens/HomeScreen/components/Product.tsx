@@ -11,49 +11,33 @@ import {
 import Margin from '../../../components/Margin/Margin.tsx';
 import {APP_COLOR} from '../../../constants/color.ts';
 import {useQuery} from '@tanstack/react-query';
-import {
-  getProductById,
-  getProducts,
-} from '../../../requests/product.request.ts';
+import {getProducts} from '../../../requests/product.request.ts';
 import {ProductResponse} from '../../../../generated';
 
-type CardItem = {
-  id: string;
-  title: string;
-  image: string;
-  price: string;
-};
-
 const HomeProduct = ({navigation}: {navigation: any}) => {
-  const {data, error, isLoading, refetch} = useQuery({
+  const {data} = useQuery({
     queryKey: ['Products'],
     queryFn: () => getProducts(),
   });
 
-  const renderItem = ({
-    item,
-    index,
-  }: {
-    item: ProductResponse;
-    index: number;
-  }) => {
+  const renderItem = ({item}: {item: ProductResponse; index: number}) => {
     return (
       <TouchableWithoutFeedback
         onPress={() => {
           navigation?.push('ProductDetail', {
-            id: item.id,
+            id: item?.id,
           });
         }}>
         <View style={styles.listContainer}>
           <View style={styles.imageContainer}>
-            <Image source={{uri: item.images[0]}} style={styles.image} />
+            <Image source={{uri: item.images?.[0]}} style={styles.image} />
           </View>
-          <Text style={styles.nameText}>{item.name}</Text>
-          <Text style={styles.priceText}>{item.price}€</Text>
+          <Text style={styles.nameText}>{item?.name}</Text>
+          <Text style={styles.priceText}>{item?.price}€</Text>
           <TouchableWithoutFeedback
             onPress={() => {
               navigation?.push('ProductDetail', {
-                id: item.id,
+                id: item?.id,
               });
             }}>
             <View style={styles.button}>
